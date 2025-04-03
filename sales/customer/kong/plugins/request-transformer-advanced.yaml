@@ -4,5 +4,5 @@ plugins:
   config:
     add:
       body: []
-      headers:
-      - X-Powered-By:Konnect!!
+      headers: 
+      - X-Powered-By:Kong Konnect!!

@@ -1,0 +1,392 @@
+type: spec.insomnia.rest/5.0
+name: Transactions API of BanKonG 1.1.0
+meta:
+  id: wrk_1745afcfbb5d4a7a876f977aaa8c9e8c
+  created: 1744881529505
+  modified: 1744881529505
+collection:
+  - name: Transactions
+    meta:
+      id: fld_37f382b9bd7b4176b4c3b48a6886a171
+      created: 1744881558818
+      modified: 1744881558818
+      sortKey: -1744881558818
+      description: Everything about transactions
+    children:
+      - url: "{{ _.base_url }}/transactions"
+        name: List all transactions
+        meta:
+          id: req_65fa7d3cfcb14ef0911396c707898e91
+          created: 1744881558818
+          modified: 1744881558818
+          isPrivate: false
+          description: Lists all transactions
+          sortKey: -1744881558818
+        method: GET
+        authentication:
+          type: apikey
+          key: apikey
+          value: "{{ _.apikey }}"
+          addTo: header
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.base_url }}/transactions"
+        name: Create new transaction
+        meta:
+          id: req_ae3843302e074ef6856f74953d120690
+          created: 1744881558818
+          modified: 1744881558818
+          isPrivate: false
+          description: Initiate a transaction
+          sortKey: -1744881558818
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "id": 42,
+              "source": "GR872659435350353",
+              "senderName": "Max Mustermann",
+              "destination": "DE8412325587359375895",
+              "amount": 42,
+              "currency": "EUR",
+              "subject": "Invoice #42-08/15"
+            }
+        headers:
+          - name: Content-Type
+            disabled: false
+            value: application/json
+        authentication:
+          type: apikey
+          key: apikey
+          value: "{{ _.apikey }}"
+          addTo: header
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.base_url }}/transactions/{{ _.id }}"
+        name: Cancel a transaction
+        meta:
+          id: req_090b2d2cb2be4886a9a336677447c84a
+          created: 1744881558819
+          modified: 1744881558819
+          isPrivate: false
+          description: Cancel a transaction
+          sortKey: -1744881558819
+        method: DELETE
+        authentication:
+          type: apikey
+          key: apikey
+          value: "{{ _.apikey }}"
+          addTo: header
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.base_url }}/transactions/{{ _.id }}"
+        name: Update a transaction
+        meta:
+          id: req_96a75985c1a640d7b84a65d828d65172
+          created: 1744881558819
+          modified: 1744881558819
+          isPrivate: false
+          description: Change a transaction
+          sortKey: -1744881558819
+        method: PATCH
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "id": 42,
+              "source": "GR872659435350353",
+              "senderName": "Max Mustermann",
+              "destination": "DE8412325587359375895",
+              "amount": 42,
+              "currency": "EUR",
+              "subject": "Invoice #42-08/15"
+            }
+        headers:
+          - name: Content-Type
+            disabled: false
+            value: application/json
+        authentication:
+          type: apikey
+          key: apikey
+          value: "{{ _.apikey }}"
+          addTo: header
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.base_url }}/transactions/{{ _.id }}"
+        name: Get specific transactions
+        meta:
+          id: req_a6fba90b974d4966868df8f4208c545e
+          created: 1744881558819
+          modified: 1744881558819
+          isPrivate: false
+          description: Returns a post by id
+          sortKey: -1744881558819
+        method: GET
+        authentication:
+          type: apikey
+          key: apikey
+          value: "{{ _.apikey }}"
+          addTo: header
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_ee8193a355555f898ba730c74fecfc61b4fb8c3d
+    created: 1744881531153
+    modified: 1744881531153
+environments:
+  name: Base Environment
+  meta:
+    id: env_ee8193a355555f898ba730c74fecfc61b4fb8c3d
+    created: 1744881531151
+    modified: 1744881558817
+    isPrivate: false
+  data:
+    base_url: "{{ _.scheme }}://{{ _.host }}{{ _.base_path }}"
+  subEnvironments:
+    - name: OpenAPI env localhost:3000
+      meta:
+        id: env_094d9020802144e6b37563427b0b5dad
+        created: 1744881558817
+        modified: 1744881558817
+        isPrivate: false
+        sortKey: 1744881558817
+      data:
+        scheme: http
+        host: localhost:3000
+        apikey: apikey
+        bearerToken: bearerToken
+spec:
+  contents:
+    openapi: 3.0.2
+    info:
+      version: 1.1.0
+      title: Transactions API of BanKonG
+      description: >
+        This API provides you access to the transactions of a logged in user.
+        You can get, create, change and delete transactions (of course always
+        depending on permissions).
+
+
+        :closed_lock_with_key: this api is protected by either OpenID Connect or api-key
+
+
+        :bulb: this API is rate limited
+      contact:
+        name: BanKong PointOfContact
+        url: http://www.bankong.com/support
+        email: support@bankong.com
+    servers:
+      - url: http://localhost:3000
+        description: local sandbox environment
+    tags:
+      - name: Transactions
+        description: Everything about transactions
+        externalDocs:
+          url: http://docs.bankong.com/transations
+    paths:
+      /transactions:
+        get:
+          description: Lists all transactions
+          summary: List all transactions
+          tags:
+            - Transactions
+          operationId: listTranactions
+          responses:
+            "200":
+              description: List of transactions
+              content:
+                application/json:
+                  schema:
+                    $ref: "#/components/schemas/TransactionsList"
+        post:
+          description: Initiate a transaction
+          summary: Create new transaction
+          tags:
+            - Transactions
+          operationId: initiateTransaction
+          requestBody:
+            content:
+              application/json; charset=utf-8:
+                schema:
+                  $ref: "#/components/schemas/Transaction"
+          responses:
+            "200":
+              description: initiated transaction
+              content:
+                application/json:
+                  schema:
+                    $ref: "#/components/schemas/Transaction"
+      "/transactions/{id}":
+        get:
+          description: Returns a post by id
+          summary: Get specific transactions
+          tags:
+            - Transactions
+          operationId: getTransaction
+          parameters:
+            - name: id
+              in: path
+              required: true
+              description: The transaction id.
+              schema:
+                $ref: "#/components/schemas/TransactionId"
+          responses:
+            "200":
+              description: Transaction received
+              content:
+                application/json:
+                  schema:
+                    $ref: "#/components/schemas/Transaction"
+            "404":
+              description: Transaction not found
+        patch:
+          description: Change a transaction
+          summary: Update a transaction
+          tags:
+            - Transactions
+          operationId: changeTransaction
+          requestBody:
+            content:
+              application/json; charset=utf-8:
+                schema:
+                  $ref: "#/components/schemas/Transaction"
+          parameters:
+            - name: id
+              in: path
+              required: true
+              description: The transaction id.
+              schema:
+                $ref: "#/components/schemas/TransactionId"
+          responses:
+            "200":
+              description: Transaction changed
+              content:
+                application/json:
+                  schema:
+                    $ref: "#/components/schemas/Transaction"
+            "404":
+              description: Transaction not found
+        delete:
+          description: Cancel a transaction
+          summary: Cancel a transaction
+          tags:
+            - Transactions
+          operationId: cancelTransaction
+          parameters:
+            - name: id
+              in: path
+              required: true
+              description: The transaction id.
+              schema:
+                $ref: "#/components/schemas/TransactionId"
+          responses:
+            "200":
+              description: Transaction cancelled
+              content:
+                application/json:
+                  schema:
+                    $ref: "#/components/schemas/Transaction"
+            "404":
+              description: Transaction not found
+    components:
+      schemas:
+        TransactionId:
+          type: integer
+          description: Unique identifier for the transaction. This identifier is both
+            unique and immutable.
+          example: 42
+        TransactionsList:
+          type: array
+          items:
+            $ref: "#/components/schemas/Transaction"
+        Transaction:
+          type: object
+          required:
+            - id
+            - source
+            - senderName
+            - destination
+            - amount
+            - currency
+            - subject
+          properties:
+            id:
+              $ref: "#/components/schemas/TransactionId"
+            source:
+              type: string
+              description: The IBAN of the sending account
+              pattern: ^[a-zA-Z]{2}[0-9]{2}[a-zA-Z0-9]{4}[0-9]{7}([a-zA-Z0-9]?){0,16}$
+              example: GR872659435350353
+            senderName:
+              type: string
+              example: Max Mustermann
+            destination:
+              type: string
+              description: The IBAN of the receiving account
+              pattern: ^[a-zA-Z]{2}[0-9]{2}[a-zA-Z0-9]{4}[0-9]{7}([a-zA-Z0-9]?){0,16}$
+              example: DE8412325587359375895
+            amount:
+              description: The amount of the transaction. Cannot be negative
+              type: number
+              minimum: 0.01
+              multipleOf: 0.01
+              example: 42
+            currency:
+              description: A code allocated to a currency by a Maintenance Agency under an
+                international identification scheme, as described in the latest
+                edition of the international standard ISO 4217
+              type: string
+              pattern: ^[A-Z]{3,3}$
+              example: EUR
+            subject:
+              type: string
+              description: Description that may be available for the statement fee.
+              minLength: 0
+              maxLength: 128
+              example: "Invoice #42-08/15"
+      securitySchemes:
+        ApiKeyAuth:
+          type: apiKey
+          in: header
+          name: apikey
+        OIDC:
+          type: http
+          scheme: bearer
+          bearerFormat: JWT
+  meta:
+    id: spc_6bb4f7ef5d26412aa3b6e375730735eb
+    created: 1744881529507
+    modified: 1744881529507

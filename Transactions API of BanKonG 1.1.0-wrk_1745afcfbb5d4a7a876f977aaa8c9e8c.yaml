@@ -13,12 +13,12 @@ collection:
       sortKey: -1744881558818
       description: Everything about transactions
     children:
-      - url: "{{ _.base_url }}/transactions"
+      - url: http://localhost:3000/transactions
         name: List all transactions
         meta:
           id: req_65fa7d3cfcb14ef0911396c707898e91
           created: 1744881558818
-          modified: 1744881558818
+          modified: 1745484466713
           isPrivate: false
           description: Lists all transactions
           sortKey: -1744881558818
@@ -60,7 +60,6 @@ collection:
             }
         headers:
           - name: Content-Type
-            disabled: false
             value: application/json
         authentication:
           type: apikey
@@ -122,7 +121,6 @@ collection:
             }
         headers:
           - name: Content-Type
-            disabled: false
             value: application/json
         authentication:
           type: apikey
@@ -200,7 +198,8 @@ spec:
         depending on permissions).
 
 
-        :closed_lock_with_key: this api is protected by either OpenID Connect or api-key
+        :closed_lock_with_key: this api is protected by either OpenID Connect or
+        api-key
 
 
         :bulb: this API is rate limited
@@ -249,7 +248,7 @@ spec:
                 application/json:
                   schema:
                     $ref: "#/components/schemas/Transaction"
-      "/transactions/{id}":
+      /transactions/{id}:
         get:
           description: Returns a post by id
           summary: Get specific transactions
@@ -389,4 +388,4 @@ spec:
   meta:
     id: spc_6bb4f7ef5d26412aa3b6e375730735eb
     created: 1744881529507
-    modified: 1744881529507
+    modified: 1745475534437

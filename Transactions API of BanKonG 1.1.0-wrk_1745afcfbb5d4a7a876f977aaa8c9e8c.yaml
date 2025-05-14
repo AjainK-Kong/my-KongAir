@@ -158,6 +158,51 @@ collection:
             send: true
             store: true
           rebuildPath: true
+      - url: "{{ _.base_url }}/transactions/{{ _.id }}"
+        name: Get specific transactions-Sample
+        meta:
+          id: req_c47b5dea0b30473da369ee5a13def303
+          created: 1747213955277
+          modified: 1747213955277
+          isPrivate: false
+          description: Returns a post by id
+          sortKey: -1744881558818.5
+        method: GET
+        authentication:
+          type: apikey
+          key: apikey
+          value: "{{ _.apikey }}"
+          addTo: header
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: New Request
+    meta:
+      id: req_5261de5b1ae149469c0da896efab852c
+      created: 1747120032464
+      modified: 1747121869336
+      isPrivate: false
+      sortKey: -1747120032464
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/11.1.0
+    authentication:
+      type: bearer
+      token: "{% AzureIdentityToken 'https://management.azure.com', false %}"
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
 cookieJar:
   name: Default Jar
   meta:
